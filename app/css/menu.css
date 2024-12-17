@@ -1,0 +1,46 @@
+#logo{
+  width:100%;
+  min-height:200px;
+  background: url('../images/LOGO.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#menu-screen>.container{
+  margin:30px auto;
+  width:400px;
+}
+.menu-button{
+  min-height:30px;
+  margin:20px;
+}
+.menu-button>div{
+  cursor: pointer;
+  transition: 0.05s;
+  text-align: center;
+  padding-top: 4px;
+  color:#900;
+  font-family: monospace;
+  font-size: 20px;
+}
+.menu-button>div:hover{
+  border: 1px dashed #400;
+  padding-top: 0;
+  color:#f00;
+  font-size: 25px;
+}
+#menu-screen nav{
+  padding:40px;
+}
+@media only screen and (max-height: 100vw) {
+  #menu-screen>.container{
+    margin:10px auto;
+  }
+  #menu-screen nav{
+    padding:10px;
+  }
+  .menu-button{
+    min-height:30px;
+    margin:10px;
+  }
+}

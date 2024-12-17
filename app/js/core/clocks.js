@@ -1,0 +1,47 @@
+GAME.CLOCKS={
+  mainClock:null,
+  blackClock:null,
+  whiteClock:null,
+  setup:function(){
+    GAME.CLOCKS.mainClock=new ChessClock();
+    GAME.CLOCKS.blackClock=new ChessClock();
+    GAME.CLOCKS.whiteClock=new ChessClock();
+    GAME.CLOCKS.mainClock.setupPrinters(
+      "full-hour",
+      "full-minute",
+      "full-second",
+      "full-milisecond"
+    );
+    GAME.CLOCKS.blackClock.setupPrinters(
+      "black-hour",
+      "black-minute",
+      "black-second",
+      "black-milisecond"
+    );
+    GAME.CLOCKS.whiteClock.setupPrinters(
+      "white-hour",
+      "white-minute",
+      "white-second",
+      "white-milisecond"
+    );
+  },
+  start:function(){
+    GAME.CLOCKS.setup();
+    GAME.CLOCKS.mainClock.startClock();
+    GAME.CLOCKS.change();
+  },
+  end:function(){
+    GAME.CLOCKS.mainClock.stopClock();
+    GAME.CLOCKS.blackClock.stopClock();
+    GAME.CLOCKS.whiteClock.stopClock();
+  },
+  change:function(){
+    if(GAME.TURNS.currentTeam=="white"){
+      GAME.CLOCKS.blackClock.pauseClock();
+      GAME.CLOCKS.whiteClock.resumeClock();
+    }else{
+      GAME.CLOCKS.whiteClock.pauseClock();
+      GAME.CLOCKS.blackClock.resumeClock();
+    }
+  }
+};

@@ -1,0 +1,32 @@
+.clock-container{
+  display: inline-block;
+  padding: 0;
+  margin: 2px;
+}
+#clocks{
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+}
+.clock-container>div{
+  text-align: center;
+  font-family: monospace;
+  border: #f00 1px dashed;
+  margin: 0;
+  padding: 5px;
+}
+.clock-container>div span{
+  padding:0;
+  margin:0;
+}
+.full-time{
+  background: #400;
+  color:#f44;
+}
+.black-time{
+  background: #000;
+  color:#fff;
+}
+.white-time{
+  background: #fff;
+  color:#000;
+}

@@ -1,0 +1,5 @@
+class GameMaster{
+  constructor(){
+
+  }
+}

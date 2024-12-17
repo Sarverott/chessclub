@@ -1,0 +1,20 @@
+.chess-row:nth-of-type(even)>.chess-field:nth-of-type(even),
+.chess-row:nth-of-type(odd)>.chess-field:nth-of-type(odd){
+  background:#aaa;
+}
+.chess-row:nth-of-type(even)>.chess-field:nth-of-type(odd),
+.chess-row:nth-of-type(odd)>.chess-field:nth-of-type(even){
+  background:#555;
+}
+.chess-row{
+  margin:0;
+  padding:0;
+  height: 12.5%;
+}
+.chess-field{
+  margin:0;
+  padding:0;
+  min-width: 12.5%;
+  min-height: 100%;
+  display: inline-block;
+}

@@ -1,0 +1,45 @@
+#info-dialog{
+  position: fixed;
+  top:30%;
+  opacity: 0;
+  left:0;
+  box-shadow:
+    0 0 10px black,
+    0 0 10px black,
+    0 0 10px black;
+  width:100%;
+  background: black;
+  color:red;
+  z-index: 1000;
+  text-align: center;
+  display:none;
+}
+#info-dialog>h1{
+  padding:0;
+  margin:5px;
+
+}
+#info-dialog[show]{
+  -webkit-animation-name: dialog-move; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  animation-name: dialog-move;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  display:block;
+}
+@keyframes dialog-move {
+    0% {
+      top: 30%;
+      opacity:0;
+    }
+    30%{
+      opacity:1;
+    }
+    90% {
+      top: 40%;
+      opacity: 1;
+    }
+    100% {opacity: 0;
+      top: 40%;
+    }
+}

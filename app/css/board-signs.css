@@ -1,0 +1,52 @@
+.board-signs-column{
+  width:89.4%;
+  height:89.4%;
+  left:5.7%;
+  top:5.7%;
+}
+.board-sign.horizontal{
+  width:10.4%;
+  height:70%;
+  padding:1% 1%;
+}
+.board-sign.vertical:first-of-type{
+  margin-top: 10%;
+}
+.board-sign.vertical{
+  width:70%;
+  height:10.9%;
+  padding:8% 1%;
+  margin-left: 15%;
+}
+.board-sign{
+  display: inline-block;
+  border-radius: 10px;
+  color:#f44;
+}
+.board-sign>div{
+  position: relative;
+  text-align: center;
+  border:2px dashed #400;
+  margin:-2px;
+  width:100%;
+  height:100%;
+}
+.board-sign p{
+  font-family: monospace;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.board-signs-column[chess-west] p{
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.board-signs-column[chess-east] p{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.board-signs-column[chess-south] p{
+  transform: translate(-50%, -50%) rotate(-180deg);
+}

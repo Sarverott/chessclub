@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sett Sarverott">
+    <title>CHESSCLUB</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/basics/possible-move.js"></script>
+    <script src="js/basics/position.js"></script>
+    <script src="js/figures/chess-figure.js"></script>
+    <script src="js/figures/pawn.js"></script>
+    <script src="js/figures/tower.js"></script>
+    <script src="js/figures/horse.js"></script>
+    <script src="js/figures/hetmn.js"></script>
+    <script src="js/figures/queen.js"></script>
+    <script src="js/figures/king.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/core/game.js"></script>
+    <script src="js/core/menu.js"></script>
+    <script src="js/core/turns.js"></script>
+    <script src="js/core/game-display.js"></script>
+    <!--<script src="js/core/config.js"></script>-->
+    <script src="js/core/clocks.js"></script>
+    <script src="js/gameplay.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="loading-screen" class="active">
+      <style>
+        .description-of-logo{
+          left:1%;
+          color:#800;
+          opacity:0;
+          position:absolute;
+          top:-140px;
+          width:100%;
+          text-align:center;
+          font-size:10px;
+          -webkit-transition: all 500ms ease-in-out;
+          -moz-transition: all 500ms ease-in-out;
+          -ms-transition: all 500ms ease-in-out;
+          -o-transition: all 500ms ease-in-out;
+          transition: all 500ms ease-in-out;
+        }
+        .logo-hook:hover .description-of-logo.active{opacity:1;}
+        .logo-hook{
+          position:absolute;
+          width:100%;
+          top:50%;
+          left:0;
+        }
+        .logo-letter{
+          animation: animationLogoLetter;
+          animation-duration: 2s;
+          animation-iteration-count: infinite;
+        }
+        .logo-letter:nth-of-type(1){animation-delay: 0.1s;}
+        .logo-letter:nth-of-type(2){animation-delay: 0.2s;}
+        .logo-letter:nth-of-type(3){animation-delay: 0.3s;}
+        .logo-letter:nth-of-type(4){animation-delay: 0.4s;}
+        .logo-letter:nth-of-type(5){animation-delay: 0.5s;}
+        .logo-letter:nth-of-type(6){animation-delay: 0.6s;}
+        .logo-letter:nth-of-type(7){animation-delay: 0.7s;}
+        .logo-letter:nth-of-type(8){animation-delay: 0.8s;}
+        .logo-letter:nth-of-type(9){animation-delay: 0.9s;}
+        .logo{
+          position:absolute;
+          left:10%;
+          width:81%;
+          text-align:center;
+          color:#f00;
+          font-family:Arial;
+        }
+        .logo.name{top:-120px;}
+        .logo.soft{top:-100px;}
+        .animation-box{
+          position: relative;
+          width:100%;
+          height:100%;
+        }
+        .loading-circle-hook{
+          width:0;
+          height:0;
+          position:absolute;
+          top:50%;
+          left:50%;
+        }
+        .in{position: relative;}
+        .loading-circle{
+          position:absolute;
+          width:100px;
+          height:100px;
+          border-radius:100%;
+          top:-50px;
+          left:-50px;
+          animation: circleAnimation;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-duration: 2s;
+        }
+        .pure-anchor{
+          text-decoration:none;
+          color:#000;
+        }
+        #loading-screen{
+          background:#000;
+          position:fixed;
+          top:0;
+          left:0;
+          width:100%;
+          height:0%;
+          overflow: hidden;
+          opacity:0;
+          -webkit-transition: all 400ms ease-in-out;
+          -moz-transition: all 400ms ease-in-out;
+          -ms-transition: all 400ms ease-in-out;
+          -o-transition: all 400ms ease-in-out;
+          transition: all 400ms ease-in-out;
+          z-index: 9999;
+        }
+        #loading-screen.active{
+          height:100%;
+          opacity:1;
+        }
+        @keyframes animationLogoLetter{
+          0%{color:#f00;}
+          10%{color:#800;}
+          20%{color:#f00;}
+          100%{color:#f00;}
+        }
+        @keyframes circleAnimationInStop{
+          0%{transform: rotate(0deg);}
+          50%{transform: rotate(-180deg);}
+          100%{transform: rotate(-360deg);}
+        }
+        @keyframes circleAnimation{
+          0%{
+            border-left:10px solid #f00;
+            border-right:10px solid #f00;
+            border-top:10px solid #f00;
+            border-bottom:10px solid #f00;
+            border-radius:100%;
+            transform: rotate(0deg);
+          }
+          25%{
+            border-left:10px solid #f00;
+            border-right:10px solid #f00;
+            border-top:10px solid #f00;
+            border-bottom:8px dashed #fff;
+            border-radius:50%;
+            transform: rotate(90deg);
+          }
+          50%{
+            border-top:10px solid #f00;
+            border-right:10px solid #f00;
+            border-left:6px dashed #fff;
+            border-bottom:6px dashed #fff;
+            border-radius:0%;
+            transform: rotate(180deg);
+          }
+          75%{
+            border-right:10px solid #f00;
+            border-left:4px dashed #fff;
+            border-top:4px dashed #fff;
+            border-bottom:4px dashed #fff;
+            border-radius:0%;
+            transform: rotate(270deg);
+          }
+          90%{
+            border-left:2px dashed #fff;
+            border-right:2px dashed #fff;
+            border-top:2px dashed #fff;
+            border-bottom:2px dashed #fff;
+            border-radius:0%;
+          }
+          100%{
+            border-left:10px solid #f00;
+            border-right:10px solid #f00;
+            border-top:10px solid #f00;
+            border-bottom:10px solid #f00;
+            border-radius:100%;
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes hideLoading{
+          from {top:0;}
+          to {top:-100%;}
+        }
+      </style>
+      <div class="animation-box">
+        <div class="logo-hook">
+          <div class="in">
+            <div class="description-of-logo active">CLICK HERE TO VISIT MORE</div>
+            <div class="logo name">
+              <a class="pure-anchor homesite" target="_blank" href="http://sarverott.github.io/">
+                <span class="logo-letter">S</span>
+                <span class="logo-letter">A</span>
+                <span class="logo-letter">R</span>
+                <span class="logo-letter">V</span>
+                <span class="logo-letter">E</span>
+                <span class="logo-letter">R</span>
+                <span class="logo-letter">O</span>
+                <span class="logo-letter">T</span>
+                <span class="logo-letter">T</span>
+              </a>
+            </div>
+            <div class="logo soft">
+              <a class="pure-anchor homesite" target="_blank" href="http://sarverott.github.io/">
+                <span class="logo-letter">S</span>
+                <span class="logo-letter">O</span>
+                <span class="logo-letter">F</span>
+                <span class="logo-letter">T</span>
+                <span class="logo-letter">W</span>
+                <span class="logo-letter">A</span>
+                <span class="logo-letter">R</span>
+                <span class="logo-letter">E</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="loading-circle-hook">
+          <div class="in">
+            <div class="loading-circle"></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function loadingScreen(mode){
+          switch (mode){
+            case "show":
+              document.getElementById("loading-screen").setAttribute("class", "active");
+            break;
+            case "hide":
+              document.getElementById("loading-screen").setAttribute("class", "inactive");
+            break;
+          }
+        }
+      </script>
+    </div>
+    <main>
+      <section hide id="game-screen">
+        <div id="info-dialog">
+          <h1>CHECKMATE</h1>
+        </div>
+        <article id="clocks">
+          <div class="clock-container">
+            <div class="full-time">
+              <div>Full Time</div>
+              <div id="full-time">
+                <span id="full-hour">0</span>:<span id="full-minute">00</span>:<span id="full-second">00</span>:<span id="full-milisecond">000</span>
+              </div>
+            </div>
+          </div>
+          <div class="clock-container">
+            <div class="black-time">
+              <div>Black Time</div>
+              <div id="black-time">
+                <span id="black-hour">0</span>:<span id="black-minute">00</span>:<span id="black-second">00</span>:<span id="black-milisecond">000</span>
+              </div>
+            </div>
+          </div>
+          <div class="clock-container">
+            <div class="white-time">
+              <div>White Time</div>
+              <div id="white-time">
+                <span id="white-hour">0</span>:<span id="white-minute">00</span>:<span id="white-second">00</span>:<span id="white-milisecond">000</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article id="gameboard">
+          <div chess-north chess-west>
+            <div class="board-corner">
+              <div></div>
+            </div>
+          </div>
+          <div class="board-signs-column" chess-north></div>
+          <div chess-north chess-east>
+            <div class="board-corner">
+              <div></div>
+            </div>
+          </div>
+          <div class="board-signs-column vertical left-border" chess-west></div>
+          <div class="board-signs-column vertical right-border" chess-east></div>
+          <div chess-west chess-south>
+            <div class="board-corner">
+              <div></div>
+            </div>
+          </div>
+          <div class="board-signs-column horizontal down-border" chess-south></div>
+          <div chess-east chess-south>
+            <div class="board-corner">
+              <div></div>
+            </div>
+          </div>
+          <div id="gametable"></div>
+          <div id="gamearea">
+            <div class="container">
+              <!--<img src="images/king.png" class="figure" team=white position=E1>
+              <img src="images/queen.png" class="figure" team=white position=D1>
+              <img src="images/hetmn.png" class="figure" team=white position=F1>
+              <img src="images/horse.png" class="figure" team=white position=B1>
+              <img src="images/tower.png" class="figure" team=white position=H1>
+              <img src="images/pawn.png" class="figure" team=white position=E2>
+              <img src="images/king.png" class="figure" team=black position=E8>
+              <img src="images/queen.png" class="figure" team=black position=D8>
+              <img src="images/hetmn.png" class="figure" team=black position=F8>
+              <img src="images/horse.png" class="figure" team=black position=B8>
+              <img src="images/tower.png" class="figure" team=black position=H8>
+              <img src="images/pawn.png" class="figure" team=black position=E7>-->
+            </div>
+          </div>
+        </article>
+        <article>
+
+        </article>
+      </section>
+      <section hide id="chat-screen">
+
+      </section>
+      <section show id="menu-screen">
+        <div class="container">
+          <div id="logo"></div>
+          <nav show id="main-menu">
+
+          </nav>
+          <nav hide id="game-servers">
+
+          </nav>
+          <nav hide id="options">
+
+          </nav>
+        </div>
+      </section>
+      <footer>
+        Game by Sett Sarverott
+      </footer>
+    </main>
+  </body>
+</html>
