@@ -1,2 +1,7 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/h"
+echo "# __HUSKY__ #"
+echo "> the H"
+
+
+
+echo "# __HUSKY__ #"
