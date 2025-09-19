@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 echo "# __HUSKY__ #"
-echo "> the H"
+echo "> commit message"
 
 
 
