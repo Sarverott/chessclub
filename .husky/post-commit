@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> post commit"
+
+
+
+echo "# __HUSKY__ #"

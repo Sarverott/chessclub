@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> pre apply patch"
+
+
+
+echo "# __HUSKY__ #"

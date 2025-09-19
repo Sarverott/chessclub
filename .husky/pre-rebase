@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> pre rebase"
+
+
+
+echo "# __HUSKY__ #"

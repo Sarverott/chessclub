@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> prepare commit message"
+
+
+
+echo "# __HUSKY__ #"

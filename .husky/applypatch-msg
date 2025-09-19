@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> apply patch message"
+
+
+
+echo "# __HUSKY__ #"

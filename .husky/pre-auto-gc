@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+echo "# __HUSKY__ #"
+echo "> pre auto gc"
+
+
+
+echo "# __HUSKY__ #"
