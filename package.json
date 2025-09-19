@@ -23,10 +23,11 @@
   },
   "devDependencies": {
     "@go-task/cli": "^3.45.4",
+    "dockerode": "^4.0.8",
     "husky": "^9.1.7"
   },
   "dependencies": {
-    "opentimestamp": "^0.1.8",
-    "@solana/web3.js": "^1.98.4"
+    "@solana/web3.js": "^1.98.4",
+    "opentimestamp": "^0.1.8"
   }
 }
