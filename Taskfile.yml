@@ -10,3 +10,9 @@ tasks:
     cmds:
       - echo "{{.GREETING}}"
     silent: true
+  install:
+    cmds:
+      - sh ./scripts/install/docker.sh
+      - sh ./scripts/install/nodejs.sh
+      - npm install
+      - npm run setup
